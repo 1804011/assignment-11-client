@@ -1,7 +1,17 @@
+.inventory-container {
+	width: 1000px;
+	margin: 0 auto;
+}
 .inventory-container .items-container {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	grid-gap: 36px;
 	width: 1000px;
 	margin: 36px auto;
+}
+.inventory-container > button {
+	background-image: linear-gradient(80deg, brown, indigo) !important;
+	border: 0 !important;
+	float: right;
+	margin-bottom: 48px;
 }

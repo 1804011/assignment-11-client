@@ -19,6 +19,7 @@ const Header = () => {
 					background: "linear-gradient(40deg,indigo,purple)",
 				}}
 				variant="dark"
+				sticky="top"
 			>
 				<Container>
 					<Navbar.Brand>

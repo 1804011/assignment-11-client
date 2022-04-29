@@ -7,7 +7,7 @@ const InventoryItem = ({ data }) => {
 			<img src={img} alt="" />
 			<h4 className="text-center my-2">{name}</h4>
 			<p className="text-center">{description}</p>
-			<p className="text-center">Quantity in stocks:{quantity}</p>
+			<p className="text-center">Quantity in stocks: {quantity}</p>
 			<p className="text-center">Price: ${price}</p>
 			<button className="py-2">Manage</button>
 		</div>

@@ -1,0 +1,55 @@
+.question-container {
+	width: 1000px;
+	margin: 60px auto;
+	/* background-color: rgba(238, 130, 238, 0.4); */
+	background-image: linear-gradient(
+		to bottom,
+		rgba(75, 0, 130, 0.7),
+		rgba(128, 0, 128, 0.7)
+	);
+	background-blend-mode: multiply;
+	border-radius: 16px;
+	padding: 24px;
+	color: white;
+}
+.question-container .question {
+	padding-left: 16px;
+	width: 50%;
+}
+.question-container .question h2 {
+	font-weight: 600;
+	font-size: 48px;
+}
+.question-container .question h2 span {
+	display: block;
+}
+.question-container .question p {
+	font-weight: 600;
+	font-family: "Roboto";
+}
+.question-container .input-info {
+	width: 50%;
+	padding-left: 24px;
+	padding-right: 24px;
+}
+.question-container .input-info form {
+	display: flex;
+	flex-direction: column;
+}
+.question-container .input-info form input,
+.question-container .input-info textarea,
+.question-container .input-info button {
+	margin-top: 16px;
+	border-radius: 8px;
+	border: 0;
+	padding: 4px;
+	padding-left: 12px;
+	resize: none;
+	font-weight: 600;
+	color: #111111;
+}
+.question-container .input-info button {
+	color: white;
+	text-align: left;
+	padding-left: 0;
+}
