@@ -1,0 +1,10 @@
+.dealer-container h2 {
+	width: 1000px;
+}
+.dealer-container {
+	margin: 80px !important;
+	padding-bottom: 24px;
+}
+.dealer-container .dealer {
+	margin: 48px;
+}
