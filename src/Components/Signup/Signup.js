@@ -1,7 +1,10 @@
 import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Signup.css";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+	useCreateUserWithEmailAndPassword,
+	useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 const Signup = () => {
 	const emailRef = useRef("");
@@ -11,6 +14,7 @@ const Signup = () => {
 	const navigate = useNavigate();
 	const [createUserWithEmailAndPassword, user, loading, error] =
 		useCreateUserWithEmailAndPassword(auth);
+	const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const email = emailRef.current.value;
@@ -18,6 +22,10 @@ const Signup = () => {
 		createUserWithEmailAndPassword(email, password, {
 			sendEmailVerification: true,
 		});
+		if (user) {
+			signInWithEmailAndPassword(email, password);
+			navigate("/");
+		}
 		if (error) {
 			if (error.message.includes("email")) {
 				setEmailError("email already in use");
@@ -26,9 +34,6 @@ const Signup = () => {
 			}
 		}
 	};
-	if (user) {
-		navigate("/login");
-	}
 
 	return (
 		<div className="signup-container">
@@ -41,7 +46,7 @@ const Signup = () => {
 							{error?.message.includes("email") && "*email already in use"}
 						</span>
 					</div>
-					<div className="input">
+					<div className="input mt-3">
 						<h6>Password</h6>
 						<input
 							type="password"

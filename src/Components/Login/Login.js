@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import "./Login.css";
 import auth from "../../firebase.init";
@@ -8,6 +8,7 @@ const Login = () => {
 	const emailRef = useRef("");
 	const passwordRef = useRef("");
 	const navigate = useNavigate("");
+
 	const [signInWithEmailAndPassword, user, loading, error] =
 		useSignInWithEmailAndPassword(auth);
 	const handleSubmit = (e) => {
@@ -16,8 +17,10 @@ const Login = () => {
 		const password = passwordRef.current.value;
 		signInWithEmailAndPassword(email, password);
 	};
+	const location = useLocation();
+	let from = location.state?.from?.pathname || "/";
 	if (user) {
-		navigate("/");
+		navigate(from, { replace: true });
 	}
 
 	return (
@@ -37,7 +40,7 @@ const Login = () => {
 							{error?.message.includes("user") && "*user not found"}
 						</span>
 					</div>
-					<div className="input">
+					<div className="input mt-3">
 						<h6>Password</h6>
 						<input
 							type="password"
