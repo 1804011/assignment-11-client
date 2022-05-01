@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "./AddItem.css";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
@@ -10,13 +10,14 @@ const AddItem = () => {
 	const quantityRef = useRef("");
 	const descriptionRef = useRef("");
 	const [user] = useAuthState(auth);
+	const [insertStatus, setInsertStatus] = useState("");
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const name = nameRef.current.value;
-		const price = priceRef.current.value;
+		const price = parseInt(priceRef.current.value);
 		const img = imgRef.current.value;
 		const supplier = supplierRef.current.value;
-		const quantity = quantityRef.current.value;
+		const quantity = parseInt(quantityRef.current.value);
 		const description = descriptionRef.current.value;
 		const data = {
 			name,
@@ -27,7 +28,7 @@ const AddItem = () => {
 			description,
 			email: user?.email,
 		};
-		fetch("https://radiant-fortress-71796.herokuapp.com/inventory-items", {
+		fetch("http://localhost:5000/inventory-items", {
 			method: "POST",
 			headers: {
 				"content-type": "application/json",
@@ -37,7 +38,12 @@ const AddItem = () => {
 			.then((res) => res.json())
 			.then((data) => {
 				if (data?.acknowledged) {
-					alert("successfully added the item");
+					// alert("successfully added the item");
+					setInsertStatus(
+						<p className="text-success p-0 m-0 text-center">
+							*item added successfully
+						</p>
+					);
 					nameRef.current.value =
 						priceRef.current.value =
 						descriptionRef.current.value =
@@ -45,12 +51,25 @@ const AddItem = () => {
 						supplierRef.current.value =
 						imgRef.current.value =
 							"";
+				} else {
+					setInsertStatus(
+						<p className="text-danger p-0 m-0 text-center">
+							*item doesn't added successfully
+						</p>
+					);
 				}
+			})
+			.catch((err) => {
+				setInsertStatus(
+					<p className="text-danger p-0 m-0 text-center">
+						*item doesn't added successfully
+					</p>
+				);
 			});
 	};
 	return (
 		<div className="add-item-container">
-			<div className="add-item shadow-lg">
+			<div className="add-item shadow-lg ">
 				<form onSubmit={handleSubmit}>
 					<div className="input">
 						<label htmlFor="name">Item Name</label>
@@ -106,6 +125,7 @@ const AddItem = () => {
 						<input type="submit" value="Add" className="mt-3 py-2" />
 					</div>
 				</form>
+				{insertStatus}
 			</div>
 		</div>
 	);

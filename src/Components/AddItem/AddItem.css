@@ -8,6 +8,7 @@
 	width: 450px;
 	border: 1px solid #ababab;
 	padding: 24px;
+	padding-top: 16px;
 	border-radius: 8px;
 	display: flex;
 	flex-direction: column;

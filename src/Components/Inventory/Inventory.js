@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Inventory = () => {
 	const [items, setItems] = useState([]);
 	useEffect(() => {
-		fetch("items.json")
+		fetch("http://localhost:5000/inventory-items?limit=6")
 			.then((res) => res.json())
 			.then((data) => setItems(data));
 	}, []);
@@ -15,7 +15,7 @@ const Inventory = () => {
 			<h2 className="text-center my-4">Inventory Services</h2>
 			<div className="items-container">
 				{items.map((item) => (
-					<InventoryItem data={item}></InventoryItem>
+					<InventoryItem data={item} key={item._id}></InventoryItem>
 				))}
 			</div>
 			<button className="btn btn-primary">

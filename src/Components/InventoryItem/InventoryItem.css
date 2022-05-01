@@ -17,6 +17,7 @@
 }
 .inventory-item-container img {
 	border-radius: 8px;
+	height: 142px;
 }
 .inventory-item-container button {
 	border-bottom-left-radius: 8px;
