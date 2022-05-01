@@ -16,6 +16,22 @@ const ManageItem = (props) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const restock = parseInt(restockRef.current.value);
+		if (restock <= 0) return;
+		fetch(`http://localhost:5000/inventory/${id}`, {
+			method: "PUT",
+			headers: {
+				"content-type": "application/json",
+			},
+			body: JSON.stringify({
+				quantity: quantity + restock,
+			}),
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				if (data?.acknowledged) {
+					setItem({ ...item, quantity: quantity + restock });
+				}
+			});
 	};
 	const handleDeliver = () => {
 		fetch(`http://localhost:5000/inventory/${id}`, {
