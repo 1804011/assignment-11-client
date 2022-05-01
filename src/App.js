@@ -5,6 +5,8 @@ import Home from "./Components/Home/Home";
 import Login from "./Components/Login/Login";
 import Signup from "./Components/Signup/Signup";
 import RequireAuth from "./Components/RequireAuth/RequireAuth";
+import ManageItem from "./Components/ManageItem/ManageItem";
+import AddItem from "./Components/AddItem/AddItem";
 
 function App() {
 	return (
@@ -18,11 +20,23 @@ function App() {
 				<Route path="register" element={<Signup />}></Route>
 				<Route
 					path="add-item"
-					element={<RequireAuth>add-item</RequireAuth>}
+					element={
+						<RequireAuth>
+							<AddItem></AddItem>
+						</RequireAuth>
+					}
 				></Route>
 				<Route
 					path="my-items"
 					element={<RequireAuth>my-items</RequireAuth>}
+				></Route>
+				<Route
+					path="inventory/:id"
+					element={
+						<RequireAuth>
+							<ManageItem></ManageItem>
+						</RequireAuth>
+					}
 				></Route>
 				<Route path="*" element={<h1>404 not found</h1>}></Route>
 			</Routes>

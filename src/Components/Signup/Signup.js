@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Signup.css";
 import {
@@ -9,10 +9,8 @@ import auth from "../../firebase.init";
 const Signup = () => {
 	const emailRef = useRef("");
 	const passwordRef = useRef("");
-	const [emailError, setEmailError] = useState("");
-	const [passwordError, setPasswordError] = useState("");
 	const navigate = useNavigate();
-	const [createUserWithEmailAndPassword, user, loading, error] =
+	const [createUserWithEmailAndPassword, user, error] =
 		useCreateUserWithEmailAndPassword(auth);
 	const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
 	const handleSubmit = (e) => {
@@ -25,13 +23,6 @@ const Signup = () => {
 		if (user) {
 			signInWithEmailAndPassword(email, password);
 			navigate("/");
-		}
-		if (error) {
-			if (error.message.includes("email")) {
-				setEmailError("email already in use");
-			} else {
-				setPasswordError("Password must be at least 6 characters long");
-			}
 		}
 	};
 
