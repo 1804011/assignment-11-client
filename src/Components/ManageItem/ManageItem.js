@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./ManageItem.css";
 const ManageItem = (props) => {
 	const { id } = useParams();
@@ -30,6 +30,7 @@ const ManageItem = (props) => {
 			.then((data) => {
 				if (data?.acknowledged) {
 					setItem({ ...item, quantity: quantity + restock });
+					restockRef.current.value = "";
 				}
 			});
 	};
@@ -82,6 +83,14 @@ const ManageItem = (props) => {
 						/>
 						<input type="submit" value="Add" className="py-2" />
 					</form>
+					<button className="btn btn-primary inventory">
+						<Link
+							to="/manage-inventory "
+							style={{ color: "white", textDecoration: "none" }}
+						>
+							Manage Inventory
+						</Link>
+					</button>
 				</div>
 			</div>
 		</div>

@@ -1,0 +1,38 @@
+.my-item-container {
+	width: 350px;
+	height: 64px;
+	border: 1px solid #ababab;
+	border-radius: 8px;
+	padding: 8px;
+	background-color: lightblue;
+	margin-bottom: 8px;
+}
+.my-item-container .img-container {
+	width: 30%;
+	height: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.my-item-container .img-container img {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+}
+.my-item-container .left {
+	justify-content: space-between;
+	width: 70%;
+	padding-left: 8px;
+	/* border: 1px solid red; */
+	align-items: center;
+}
+button {
+	width: 48px;
+	height: 48px;
+	border-radius: 50% !important;
+	display: block;
+	border: 0 !important;
+	background-image: linear-gradient(60deg, indigo, purple);
+	color: white;
+	font-weight: 600;
+}
