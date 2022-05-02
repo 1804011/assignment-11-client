@@ -15,7 +15,9 @@ const Signup = () => {
 	const [passwordError, setPasswordError] = useState("");
 	const navigate = useNavigate();
 	const [createUserWithEmailAndPassword, user, loading, error] =
-		useCreateUserWithEmailAndPassword(auth);
+		useCreateUserWithEmailAndPassword(auth, {
+			sendEmailVerification: true,
+		});
 	const [signInWithGoogle, googleUser, googleLoading, googleError] =
 		useSignInWithGoogle(auth);
 	const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
@@ -26,13 +28,8 @@ const Signup = () => {
 		e.preventDefault();
 		const email = emailRef.current.value;
 		const password = passwordRef.current.value;
-		createUserWithEmailAndPassword(email, password, {
-			sendEmailVerification: true,
-		});
-		if (user) {
-			signInWithEmailAndPassword(email, password);
-			navigate("/");
-		}
+		createUserWithEmailAndPassword(email, password);
+
 		if (error) {
 			if (error.message.includes("email")) {
 				setEmailError("email already in use");
@@ -41,6 +38,13 @@ const Signup = () => {
 			}
 		}
 	};
+	if (user) {
+		signInWithEmailAndPassword(
+			emailRef.current.value,
+			passwordRef.current.value
+		);
+		navigate("/");
+	}
 	if (googleUser) {
 		navigate("/");
 	}

@@ -13,10 +13,11 @@ const navLinkStyle = {
 	fontWeight: "600",
 };
 const Header = () => {
-	const [user] = useAuthState(auth);
+	const [user, loading] = useAuthState(auth);
 	const handleSignOut = () => {
 		signOut(auth);
 	};
+
 	return (
 		<div className="header-container">
 			<Navbar

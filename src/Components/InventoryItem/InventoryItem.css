@@ -4,6 +4,7 @@
 	width: 300px;
 	border-radius: 8px;
 	padding: 4px;
+	position: relative;
 	font-style: italic;
 }
 .inventory-item-container h4 {
@@ -22,8 +23,11 @@
 .inventory-item-container button {
 	border-bottom-left-radius: 8px;
 	border-bottom-right-radius: 8px;
-
+	position: absolute;
+	bottom: 0;
 	background-image: linear-gradient(60deg, indigo, purple);
 	color: white;
 	border: 0;
+	width: 100%;
+	left: 0;
 }
