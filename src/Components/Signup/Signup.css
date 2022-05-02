@@ -41,3 +41,7 @@
 	font-size: 12px;
 	font-weight: 600;
 }
+.signup-container .signup-form > button {
+	border: 1px solid #ababab !important;
+	font-weight: 600;
+}

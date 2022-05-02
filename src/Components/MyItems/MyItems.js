@@ -31,6 +31,7 @@ const MyItems = () => {
 	}, []);
 	return (
 		<div className="my-items-container">
+			<h1 className="text-center mb-5">My Items ({items.length})</h1>
 			{items.map((item) => (
 				<MyItem item={item} key={item._id} handleDelete={handleDelete}></MyItem>
 			))}

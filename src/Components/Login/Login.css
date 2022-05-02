@@ -38,3 +38,7 @@
 	font-weight: 600;
 	color: #111111;
 }
+.login-container .login-form > button {
+	border: 1px solid #ababab !important;
+	font-weight: 600;
+}

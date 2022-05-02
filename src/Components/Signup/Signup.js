@@ -1,9 +1,11 @@
 import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Signup.css";
+import google from "../../images/google.png";
 import {
 	useCreateUserWithEmailAndPassword,
 	useSignInWithEmailAndPassword,
+	useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 const Signup = () => {
@@ -14,7 +16,12 @@ const Signup = () => {
 	const navigate = useNavigate();
 	const [createUserWithEmailAndPassword, user, loading, error] =
 		useCreateUserWithEmailAndPassword(auth);
+	const [signInWithGoogle, googleUser, googleLoading, googleError] =
+		useSignInWithGoogle(auth);
 	const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
+	const handleGoogleBtn = () => {
+		signInWithGoogle();
+	};
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const email = emailRef.current.value;
@@ -34,6 +41,9 @@ const Signup = () => {
 			}
 		}
 	};
+	if (googleUser) {
+		navigate("/");
+	}
 
 	return (
 		<div className="signup-container">
@@ -71,6 +81,17 @@ const Signup = () => {
 							</Link>
 						</span>
 					</small>
+				</p>
+				<p className="text-center">----- or -----</p>
+				<button
+					onClick={handleGoogleBtn}
+					className="d-flex py-1 btn align-items-center justify-content-center shadow border-rounded"
+				>
+					<img src={google} height={36} width={36} alt="google" />
+					<span>Continue With Google</span>
+				</button>
+				<p className="m-0 text-center text-danger">
+					{googleError && <small>*Popup closed by user</small>}
 				</p>
 			</div>
 		</div>
