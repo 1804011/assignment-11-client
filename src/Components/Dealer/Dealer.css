@@ -8,3 +8,20 @@
 .dealer-container .dealer {
 	margin: 48px;
 }
+@media only screen and (max-width: 768px) {
+	.dealer-container {
+		width: 100vw;
+		margin: 0 !important;
+		padding: 0;
+	}
+	.dealer-container h2 {
+		width: 100%;
+	}
+	.dealer-container .dealer img {
+		display: block;
+		margin: 24px auto;
+
+		width: 125px;
+		height: 125px;
+	}
+}

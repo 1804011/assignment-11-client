@@ -7,7 +7,7 @@
 		rgba(75, 0, 130, 0.7),
 		rgba(128, 0, 128, 0.7)
 	);
-	background-blend-mode: multiply;
+
 	border-radius: 16px;
 	padding: 24px;
 	color: white;
@@ -52,4 +52,22 @@
 	color: white;
 	text-align: left;
 	padding-left: 0;
+}
+@media only screen and (max-width: 768px) {
+	.question-container {
+		width: 90vw;
+		flex-direction: column;
+	}
+	.question-container .question {
+		width: 100%;
+	}
+	.question-container .question h2 {
+		font-size: 36px;
+	}
+	.question-container .input-info {
+		width: 100%;
+	}
+	.question-container .input-info textarea {
+		height: 80px;
+	}
 }

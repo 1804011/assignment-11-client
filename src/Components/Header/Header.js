@@ -8,6 +8,7 @@ import auth from "../../firebase.init";
 import { faSignOut } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { signOut } from "firebase/auth";
+
 const navLinkStyle = {
 	color: "white",
 	fontWeight: "600",

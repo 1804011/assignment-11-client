@@ -20,8 +20,8 @@ const Login = () => {
 		useSignInWithGoogle(auth);
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		const email = emailRef.current.value;
-		const password = passwordRef.current.value;
+		const email = emailRef.current?.value;
+		const password = passwordRef.current?.value;
 		signInWithEmailAndPassword(email, password);
 	};
 	const handleGoogleBtn = () => {

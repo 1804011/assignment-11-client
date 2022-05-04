@@ -3,3 +3,9 @@
 	box-shadow: none !important;
 	outline: none !important;
 }
+@media only screen and (max-width: 768px) {
+	.header-container .navbar-toggler {
+		font-weight: 700;
+		transform: scale(80%);
+	}
+}

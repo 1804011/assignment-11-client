@@ -17,3 +17,26 @@
 	background-color: rgba(5, 5, 5, 0.8);
 	background-color: rgba(128, 128, 128, 0.05);
 }
+@media only screen and (max-width: 768px) {
+	.footer-container {
+		width: 100vw;
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.footer-container .email {
+		flex-direction: column;
+		padding: 16px 24px;
+	}
+	.footer-container .right {
+		width: 75% !important;
+		margin-top: 16px;
+		display: block;
+		padding-right: 0;
+		margin-bottom: 16px;
+	}
+	.footer-container .copyright {
+		padding: 16px;
+		font-size: 8px;
+		font-weight: 700;
+	}
+}

@@ -8,8 +8,8 @@ const InventoryItem = ({ data }) => {
 		<div className="inventory-item-container shadow">
 			<img src={img} alt="" />
 			<h4 className="text-center my-2">{name}</h4>
-			<p className="text-center">{description}</p>
-			<p className="text-center">Quantity in stocks: {quantity}</p>
+			<p className="text-center px-2">{description}</p>
+			<p className="text-center ">Quantity in stocks: {quantity}</p>
 			<p className="text-center">Price: ${price}</p>
 			<p className="text-center">Supplier: {supplier}</p>
 			<button
