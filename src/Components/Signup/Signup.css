@@ -3,6 +3,7 @@
 	justify-content: center;
 	align-items: center;
 	height: calc(100vh - 60px);
+
 	/* background-image: linear-gradient(80deg, green, purple);
      */
 }
@@ -12,6 +13,7 @@
 	flex-direction: column;
 	padding: 24px;
 	border-radius: 8px;
+	max-width: 90vw;
 }
 .signup-container .signup-form input {
 	display: block;
@@ -44,4 +46,10 @@
 .signup-container .signup-form > button {
 	border: 1px solid #ababab !important;
 	font-weight: 600;
+}
+@media only screen and (max-width: 768px) {
+	.signup-container {
+		margin: 16px auto;
+		width: 90vw;
+	}
 }

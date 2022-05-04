@@ -12,3 +12,8 @@
 	border-radius: 50% !important;
 	background-color: lightblue;
 }
+@media only screen and (max-width: 768px) {
+	.excluded {
+		display: none;
+	}
+}

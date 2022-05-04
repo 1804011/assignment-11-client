@@ -11,8 +11,8 @@ const ManageInventoryItem = (props) => {
 			<td className="text-center py-2">
 				<img src={img} height={60} width={60} alt="" />
 			</td>
-			<td className="text-center py-2">{supplier}</td>
-			<td className="text-center py-2">{quantity}</td>
+			<td className="text-center py-2 excluded">{supplier}</td>
+			<td className="text-center py-2 excluded">{quantity}</td>
 			<td className="text-center py-2">{price}</td>
 			<td className="text-center py-2">
 				<button onClick={() => handleDelete(_id)}>

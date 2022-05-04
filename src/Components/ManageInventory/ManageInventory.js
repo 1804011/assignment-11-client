@@ -36,8 +36,8 @@ const ManageInventory = () => {
 				<tr className="table-header">
 					<th className="px-5 py-3 text-center">Name</th>
 					<th className="px-5 py-3 text-center">Image</th>
-					<th className="px-5 py-3 text-center">Supplier</th>
-					<th className="px-5 py-3 text-center">Quantity</th>
+					<th className="px-5 py-3 text-center  excluded">Supplier</th>
+					<th className="px-5 py-3 text-center excluded">Quantity</th>
 					<th className="px-5 py-3 text-center">Price</th>
 					<th className="px-5 py-3 text-center">Action</th>
 				</tr>
