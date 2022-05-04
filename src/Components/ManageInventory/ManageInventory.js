@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import ManageInventoryItem from "../ManageInventoryItem/ManageInventoryItem";
 import "./ManageInventory.css";
 const ManageInventory = () => {
@@ -48,6 +49,11 @@ const ManageInventory = () => {
 					></ManageInventoryItem>
 				))}
 			</table>
+			<button className="btn btn-primary add-btn">
+				<Link to="/add-item" style={{ textDecoration: "none", color: "white" }}>
+					Add new item
+				</Link>
+			</button>
 		</div>
 	);
 };

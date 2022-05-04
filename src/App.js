@@ -9,12 +9,24 @@ import ManageItem from "./Components/ManageItem/ManageItem";
 import AddItem from "./Components/AddItem/AddItem";
 import ManageInventory from "./Components/ManageInventory/ManageInventory";
 import MyItems from "./Components/MyItems/MyItems";
+import { useState } from "react";
+import PreLoader from "./Components/PreLoader/PreLoader";
 
 function App() {
+	const [loading, setLoading] = useState(true);
 	return (
-		<div>
-			<Header></Header>
-			<Routes>
+		<div
+			onLoad={() =>
+				setTimeout(() => {
+					setLoading(false);
+				}, 2000)
+			}
+		>
+			<div className={loading ? "d-block" : "d-none"}>
+				<PreLoader loading={loading}></PreLoader>
+			</div>
+			<Header className={loading ? "d-none" : "d-block"}></Header>
+			<Routes className={loading ? "d-none" : "d-block"}>
 				<Route path="/" element={<Home />}></Route>
 				<Route path="about" element={"about"}></Route>
 				<Route path="login" element={<Login />}></Route>

@@ -8,6 +8,7 @@ import {
 	useSignInWithEmailAndPassword,
 	useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
+import { Spinner } from "react-bootstrap";
 const Login = () => {
 	const emailRef = useRef("");
 	const passwordRef = useRef("");
@@ -62,6 +63,13 @@ const Login = () => {
 							{error && !error?.message.includes("user") && "*wrong password"}
 						</span>
 					</div>
+					{loading && (
+						<div className="d-flex justify-content-center my-2">
+							<Spinner animation="border" role="status">
+								<span className="visually-hidden">Loading...</span>
+							</Spinner>
+						</div>
+					)}
 					<input type="submit" value="Login" className="py-2" />
 				</form>
 				<p className="text-center">

@@ -8,6 +8,9 @@ import {
 	useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
+import PreLoader from "../PreLoader/PreLoader";
+import { Spinner } from "react-bootstrap";
+
 const Signup = () => {
 	const emailRef = useRef("");
 	const passwordRef = useRef("");
@@ -26,8 +29,8 @@ const Signup = () => {
 	};
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		const email = emailRef.current.value;
-		const password = passwordRef.current.value;
+		const email = emailRef.current?.value;
+		const password = passwordRef.current?.value;
 		createUserWithEmailAndPassword(email, password);
 
 		if (error) {
@@ -40,8 +43,8 @@ const Signup = () => {
 	};
 	if (user) {
 		signInWithEmailAndPassword(
-			emailRef.current.value,
-			passwordRef.current.value
+			emailRef.current?.value,
+			passwordRef.current?.value
 		);
 		navigate("/");
 	}
@@ -74,6 +77,13 @@ const Signup = () => {
 								"*password at least 6 characters long"}
 						</span>
 					</div>
+					{loading && (
+						<div className="d-flex justify-content-center my-2">
+							<Spinner animation="border" role="status">
+								<span className="visually-hidden">Loading...</span>
+							</Spinner>
+						</div>
+					)}
 					<input type="submit" value="Signup" className="py-2" />
 				</form>
 				<p className="text-center">
