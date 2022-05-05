@@ -7,11 +7,18 @@ import Inventory from "../Inventory/Inventory";
 import PreLoader from "../PreLoader/PreLoader";
 import Question from "../Question/Question";
 
-const Home = ({ loading, setLoading, location }) => {
+const Home = ({ loading, setLoading }) => {
 	return (
-		<div className="home-container">
+		<div
+			className="home-container"
+			onLoad={() => {
+				setTimeout(() => {
+					setLoading(false);
+				}, 2000);
+			}}
+		>
 			<div className={loading ? "d-block" : "d-none"}>
-				<PreLoader loading={false}></PreLoader>
+				<PreLoader loading={loading}></PreLoader>
 			</div>
 			<div className={loading ? "d-none" : "d-block"}>
 				<Banner></Banner>

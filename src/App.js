@@ -16,11 +16,17 @@ import Blogs from "./Components/Blogs/Blogs";
 import NotFound from "./Components/NotFound/NotFound";
 
 function App() {
+	const [loading, setLoading] = useState(true);
+	const location = useLocation();
+
 	return (
 		<div>
-			<Header></Header>
+			{(location.pathname != "/" || !loading) && <Header></Header>}
 			<Routes>
-				<Route path="/" element={<Home></Home>}></Route>
+				<Route
+					path="/"
+					element={<Home loading={loading} setLoading={setLoading}></Home>}
+				></Route>
 				<Route path="about" element={<About />}></Route>
 				<Route path="login" element={<Login />}></Route>
 				<Route
