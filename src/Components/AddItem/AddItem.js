@@ -28,7 +28,7 @@ const AddItem = () => {
 			description,
 			email: user?.email,
 		};
-		fetch("http://localhost:5000/inventory-items", {
+		fetch(" https://radiant-fortress-71796.herokuapp.com/inventory-items", {
 			method: "POST",
 			headers: {
 				"content-type": "application/json",

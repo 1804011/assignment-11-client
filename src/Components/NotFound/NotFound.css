@@ -1,0 +1,9 @@
+.not-found {
+	width: 100vw;
+}
+.not-found h1 {
+	font-weight: 900;
+}
+.not-found p {
+	font-weight: 600;
+}

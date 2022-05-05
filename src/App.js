@@ -1,6 +1,6 @@
 import "./App.css";
 import Header from "./Components/Header/Header";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import Login from "./Components/Login/Login";
 import Signup from "./Components/Signup/Signup";
@@ -9,29 +9,30 @@ import ManageItem from "./Components/ManageItem/ManageItem";
 import AddItem from "./Components/AddItem/AddItem";
 import ManageInventory from "./Components/ManageInventory/ManageInventory";
 import MyItems from "./Components/MyItems/MyItems";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PreLoader from "./Components/PreLoader/PreLoader";
+import About from "./Components/About/About";
+import Blogs from "./Components/Blogs/Blogs";
+import NotFound from "./Components/NotFound/NotFound";
 
 function App() {
-	const [loading, setLoading] = useState(true);
 	return (
-		<div
-			onLoad={() =>
-				setTimeout(() => {
-					setLoading(false);
-				}, 2000)
-			}
-		>
-			<div className={loading ? "d-block" : "d-none"}>
-				<PreLoader loading={loading}></PreLoader>
-			</div>
-			<Header className={loading ? "d-none" : "d-block"}></Header>
-			<Routes className={loading ? "d-none" : "d-block"}>
-				<Route path="/" element={<Home />}></Route>
-				<Route path="about" element={"about"}></Route>
+		<div>
+			<Header></Header>
+			<Routes>
+				<Route path="/" element={<Home></Home>}></Route>
+				<Route path="about" element={<About />}></Route>
 				<Route path="login" element={<Login />}></Route>
-				<Route path="manage-inventory" element={<ManageInventory />}></Route>
+				<Route
+					path="manage-inventory"
+					element={
+						<RequireAuth>
+							<ManageInventory />
+						</RequireAuth>
+					}
+				></Route>
 				<Route path="register" element={<Signup />}></Route>
+				<Route path="blogs" element={<Blogs />}></Route>
 				<Route
 					path="add-item"
 					element={
@@ -56,7 +57,7 @@ function App() {
 						</RequireAuth>
 					}
 				></Route>
-				<Route path="*" element={<h1>404 not found</h1>}></Route>
+				<Route path="*" element={<NotFound />}></Route>
 			</Routes>
 		</div>
 	);

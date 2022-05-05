@@ -5,19 +5,22 @@ import "./ManageInventory.css";
 const ManageInventory = () => {
 	const [items, setItems] = useState([]);
 	useEffect(() => {
-		fetch("http://localhost:5000/inventory-items")
+		fetch(" https://radiant-fortress-71796.herokuapp.com/inventory-items")
 			.then((res) => res.json())
 			.then((data) => setItems(data));
 	}, []);
 	const handleDelete = (id) => {
 		const confirmDelete = window.confirm("Do you want to delete?");
 		if (confirmDelete) {
-			fetch(`http://localhost:5000/manage-inventory/${id}`, {
-				method: "DELETE",
-				headers: {
-					"content-type": "application/json",
-				},
-			})
+			fetch(
+				` https://radiant-fortress-71796.herokuapp.com/manage-inventory/${id}`,
+				{
+					method: "DELETE",
+					headers: {
+						"content-type": "application/json",
+					},
+				}
+			)
 				.then((res) => res.json())
 				.then((data) => {
 					if (data?.acknowledged) {

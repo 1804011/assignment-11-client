@@ -6,7 +6,9 @@ import { Link } from "react-router-dom";
 const Inventory = () => {
 	const [items, setItems] = useState([]);
 	useEffect(() => {
-		fetch("http://localhost:5000/inventory-items?limit=6")
+		fetch(
+			" https://radiant-fortress-71796.herokuapp.com/inventory-items?limit=6"
+		)
 			.then((res) => res.json())
 			.then((data) => setItems(data));
 	}, []);

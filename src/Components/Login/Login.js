@@ -91,7 +91,7 @@ const Login = () => {
 					<span>Continue With Google</span>
 				</button>
 				<p className="m-0 text-center text-danger">
-					{googleError && <small>*Popup closed by user</small>}
+					{googleError && <small>{}googleError?.message</small>}
 				</p>
 			</div>
 		</div>

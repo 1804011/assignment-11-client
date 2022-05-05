@@ -8,4 +8,7 @@
 		font-weight: 700;
 		transform: scale(80%);
 	}
+	.header-container .logout-btn {
+		padding: 0;
+	}
 }

@@ -10,6 +10,7 @@
 	border: 1px solid #ababab;
 	border-radius: 8px;
 	padding: 8px;
+	max-width: 90vw;
 }
 .manage-item-container .manage-item .img-container {
 	width: 50%;
@@ -35,4 +36,10 @@
 .manage-item-container .manage-item button.inventory {
 	color: white !important;
 	float: right;
+}
+@media only screen and (max-width: 768px) {
+	.manage-item-container .manage-item .img-container {
+		width: 60%;
+		padding: 0;
+	}
 }

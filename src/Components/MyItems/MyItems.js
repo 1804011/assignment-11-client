@@ -10,7 +10,7 @@ const MyItems = () => {
 	const handleDelete = (id) => {
 		const deleteConfirm = window.confirm("Do you want to delete?");
 		if (deleteConfirm) {
-			fetch(`http://localhost:5000/my-items/${id}`, {
+			fetch(` https://radiant-fortress-71796.herokuapp.com/my-items/${id}`, {
 				method: "DELETE",
 				headers: {
 					"content-type": "application/json",
@@ -26,7 +26,9 @@ const MyItems = () => {
 		}
 	};
 	useEffect(() => {
-		fetch(`http://localhost:5000/inventory-items/${user?.email}`)
+		fetch(
+			` https://radiant-fortress-71796.herokuapp.com/inventory-items/${user?.email}`
+		)
 			.then((res) => res.json())
 			.then((data) => setItems(data));
 	}, []);
