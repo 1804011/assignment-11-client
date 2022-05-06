@@ -39,7 +39,6 @@ const Login = () => {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
 				localStorage.setItem("accessToken", JSON.stringify(data?.accessToken));
 			});
 	};
@@ -92,7 +91,8 @@ const Login = () => {
 								type="button"
 								className="btn p-0 m-0"
 								onClick={() => {
-									sendPasswordResetEmail(emailRef.current.value);
+									if (emailRef.current.value.length > 0)
+										sendPasswordResetEmail(emailRef.current.value);
 								}}
 							>
 								<small className="ps-1 text-primary">Reset Password</small>
