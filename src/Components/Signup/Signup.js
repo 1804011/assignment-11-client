@@ -42,11 +42,7 @@ const Signup = () => {
 		}
 	};
 	if (user) {
-		signInWithEmailAndPassword(
-			emailRef.current?.value,
-			passwordRef.current?.value
-		);
-		navigate("/");
+		navigate("/login");
 	}
 	if (googleUser) {
 		navigate("/");

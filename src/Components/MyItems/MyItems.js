@@ -26,9 +26,13 @@ const MyItems = () => {
 		}
 	};
 	useEffect(() => {
-		fetch(
-			` https://radiant-fortress-71796.herokuapp.com/inventory-items/${user?.email}`
-		)
+		fetch(`http://localhost:5000/inventory-items/${user?.email}`, {
+			headers: {
+				authorization: `Bearer ${JSON.parse(
+					localStorage.getItem("accessToken")
+				)}`,
+			},
+		})
 			.then((res) => res.json())
 			.then((data) => setItems(data));
 	}, []);

@@ -14,7 +14,8 @@ import PreLoader from "./Components/PreLoader/PreLoader";
 import About from "./Components/About/About";
 import Blogs from "./Components/Blogs/Blogs";
 import NotFound from "./Components/NotFound/NotFound";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function App() {
 	const [loading, setLoading] = useState(true);
 	const location = useLocation();
@@ -65,6 +66,7 @@ function App() {
 				></Route>
 				<Route path="*" element={<NotFound />}></Route>
 			</Routes>
+			<ToastContainer />
 		</div>
 	);
 }

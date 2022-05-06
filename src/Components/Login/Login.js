@@ -4,11 +4,14 @@ import { useRef } from "react";
 import "./Login.css";
 import auth from "../../firebase.init";
 import google from "../../images/google.png";
+
 import {
+	useSendPasswordResetEmail,
 	useSignInWithEmailAndPassword,
 	useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import { Spinner } from "react-bootstrap";
+import { toast } from "react-toastify";
 const Login = () => {
 	const emailRef = useRef("");
 	const passwordRef = useRef("");
@@ -18,11 +21,27 @@ const Login = () => {
 		useSignInWithEmailAndPassword(auth);
 	const [signInWithGoogle, googleUser, googleLoading, googleError] =
 		useSignInWithGoogle(auth);
-	const handleSubmit = (e) => {
+	const [sendPasswordResetEmail, sending, sendingError] =
+		useSendPasswordResetEmail(auth);
+
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const email = emailRef.current?.value;
 		const password = passwordRef.current?.value;
-		signInWithEmailAndPassword(email, password);
+
+		await signInWithEmailAndPassword(email, password);
+		fetch("http://localhost:5000/login", {
+			method: "POST",
+			headers: {
+				"content-type": "application/json",
+			},
+			body: JSON.stringify({ email }),
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+				localStorage.setItem("accessToken", JSON.stringify(data?.accessToken));
+			});
 	};
 	const handleGoogleBtn = () => {
 		signInWithGoogle();
@@ -31,6 +50,9 @@ const Login = () => {
 	let from = location.state?.from?.pathname || "/";
 	if (user || googleUser) {
 		navigate(from, { replace: true });
+	}
+	if (sending) {
+		toast("Password reset email send");
 	}
 
 	return (
@@ -62,6 +84,20 @@ const Login = () => {
 						<span className="error text-danger">
 							{error && !error?.message.includes("user") && "*wrong password"}
 						</span>
+						<div className="d-flex my-1 align-items-center">
+							<span>
+								<small>Forgot Password? </small>
+							</span>
+							<button
+								type="button"
+								className="btn p-0 m-0"
+								onClick={() => {
+									sendPasswordResetEmail(emailRef.current.value);
+								}}
+							>
+								<small className="ps-1 text-primary">Reset Password</small>
+							</button>
+						</div>
 					</div>
 					{loading && (
 						<div className="d-flex justify-content-center my-2">
@@ -91,7 +127,7 @@ const Login = () => {
 					<span>Continue With Google</span>
 				</button>
 				<p className="m-0 text-center text-danger">
-					{googleError && <small>{}googleError?.message</small>}
+					{googleError && <small>googleError?.message</small>}
 				</p>
 			</div>
 		</div>
