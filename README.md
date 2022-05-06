@@ -13,3 +13,7 @@ Website Link: [Electronics Inventories](https://assignment-11-124e0.web.app).
 - This website has login and logout features via firebase authentication and support social login
 - this website has preloading effect
 - JWT is also introduced to secure the api.
+
+#### StackOverflow Question Link:
+
+[Environment variable](https://i.ibb.co/nwwnLBQ/Screenshot-45.png).
