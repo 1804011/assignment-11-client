@@ -78,6 +78,7 @@ const ManageItem = (props) => {
 							name="restock"
 							id="restock"
 							className="py-1"
+							min={1}
 							ref={restockRef}
 							required
 						/>

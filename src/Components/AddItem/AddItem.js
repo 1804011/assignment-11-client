@@ -118,6 +118,7 @@ const AddItem = () => {
 							rows="10"
 							placeholder="Enter description"
 							ref={descriptionRef}
+							maxLength={175}
 							required
 						></textarea>
 					</div>
