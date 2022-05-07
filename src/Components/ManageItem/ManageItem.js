@@ -69,7 +69,7 @@ const ManageItem = (props) => {
 						onClick={handleDeliver}
 						disabled={quantity <= 0}
 					>
-						Deliver
+						{quantity <= 0 ? "Sold" : "Deliver"}
 					</button>
 					<form onSubmit={handleSubmit}>
 						<label htmlFor="restock">Add To Stock: </label>

@@ -52,7 +52,7 @@ const ManageInventory = () => {
 					></ManageInventoryItem>
 				))}
 			</table>
-			<button className="btn btn-primary add-btn">
+			<button className="btn btn-primary add-btn mb-4">
 				<Link to="/add-item" style={{ textDecoration: "none", color: "white" }}>
 					Add new item
 				</Link>
